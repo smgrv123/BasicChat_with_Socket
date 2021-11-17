@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1068373479026",
+    "project_id": "chatauth-8522d",
+    "storage_bucket": "chatauth-8522d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068373479026:android:b7611a63749d551d1dbceb",
+        "android_client_info": {
+          "package_name": "com.chatfrontend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068373479026-cv4torldhlusom6ucprd0kc9klvtovqo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chatfrontend",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1068373479026-jbf5m0s43svee4o9fmnbv2ng4hbtavbq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrnNvkArZUNZtyplHtcHakFLWRi3Co1Ms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068373479026-jbf5m0s43svee4o9fmnbv2ng4hbtavbq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
