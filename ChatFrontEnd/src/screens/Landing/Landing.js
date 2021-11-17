@@ -4,9 +4,12 @@ import List from '../../components/Landing/List'
 import Store from '../../Store/Store';
 import styles from '../../styles/LandingStyles';
 
-const data = Store.data;
+const data = Store.newData;
 
-const Landing = ({navigation}) => {
+const Landing = ({navigation,route}) => {
+  
+  const {data} = route.params;
+
   return (
     <View style={styles.container}>
       <FlatList

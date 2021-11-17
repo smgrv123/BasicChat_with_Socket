@@ -8,92 +8,16 @@ import {
 import {Input} from 'react-native-elements';
 import Store from '../../Store/Store';
 
-const Login = () => {
+const Login = ({navigation}) => {
   const [userID, setuserID] = useState();
 
   const onSubmit = () => {
-    let temp =[
-      {
-        id: 0,
-        name: 'test2',
-        age: 31,
-        height: 6.0,
-        country: 'India',
-        education: 'Masters degree',
-        job: 'Design Leader',
-        status: 'unknown',
-        state: 'Delhi',
-      },
-      {
-        id: 1,
-        name: 'test3',
-        age: 31,
-        height: 6.0,
-        country: 'India',
-        education: 'Masters degree',
-        job: 'Design Leader',
-        status: 'unknown',
-        state: 'Delhi',
-      },
-      {
-        id: 2,
-        name: 'test4',
-        age: 31,
-        height: 6.0,
-        country: 'India',
-        education: 'Masters degree',
-        job: 'Design Leader',
-        status: 'unknown',
-        state: 'Delhi',
-      },
-      {
-        id: 3,
-        name: 'test5',
-        age: 31,
-        height: 6.0,
-        country: 'India',
-        education: 'Masters degree',
-        job: 'Design Leader',
-        status: 'unknown',
-        state: 'Delhi',
-      },
-      {
-        id: 4,
-        name: 'test5',
-        age: 31,
-        height: 6.0,
-        country: 'India',
-        education: 'Masters degree',
-        job: 'Design Leader',
-        status: 'unknown',
-        state: 'Delhi',
-      },
-      {
-        id: 5,
-        name: 'test6',
-        age: 31,
-        height: 6.0,
-        country: 'India',
-        education: 'Masters degree',
-        job: 'Design Leader',
-        status: 'unknown',
-        state: 'Delhi',
-      },
-      {
-        id: 6,
-        name: 'test1',
-        age: 31,
-        height: 6.0,
-        country: 'India',
-        education: 'Masters degree',
-        job: 'Design Leader',
-        status: 'unknown',
-        state: 'Delhi',
-      },
-    ];
-    
-    temp = temp.filter(item => item.id!==userID);
-    console.log('temp', temp);
+    console.log('userID',typeof(userID))
+    let data =Store.data
+
+    data = data.filter(item =>  item.id!=userID);
+    Store.setId(userID);
+    navigation.navigate('Landing',{data:data});
   };
 
   return (

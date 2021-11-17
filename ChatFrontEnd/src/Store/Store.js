@@ -80,12 +80,15 @@ class Store {
       state: 'Delhi',
     },
   ];
+  id=''
   
-    constructor() {
+  constructor() {
     makeAutoObservable(this);
   }
 
-
+  setId(id){
+    this.id=id
+  }
 }
 
 export default new Store();
