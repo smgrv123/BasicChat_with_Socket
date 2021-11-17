@@ -6,9 +6,9 @@ const port = 3000;
 
 io.on("connection", (socket) => {
   console.log("a user connected :D");
-  socket.on("message", (msg) => {
-    console.log(msg);
-    io.emit("message", msg);
+  socket.on("message", ({message,id,time}) => {
+    console.log(message,id,time);
+    io.emit("message", {message,id,time});
   });
 });
 
