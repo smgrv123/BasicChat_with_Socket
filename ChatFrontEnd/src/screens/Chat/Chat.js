@@ -9,35 +9,37 @@ import styles from '../../styles/ChatStyles';
 import Store from '../../Store/Store';
 import moment from 'moment';
 import LeftComponent from '../../components/Chat/LeftComponent';
+import ChatMessages from '../../components/Chat/ChatMessages';
 
 const Chat = ({route}) => {
-  const {name} = route.params;
+  const {name, userId} = route.params;
 
-  const [chat, setChat] = useState({message: '', id: '', time: ''});
-  const [messages, setMessages] = useState([]);
+  const [chat, setChat] = useState({message: '', sid: '', time: '', rid: ''});
+  const [messages, setMessages] = useState(Store.messages);
 
   const socketRef = useRef();
 
   useEffect(() => {
     socketRef.current = io('http://192.168.1.29:3000');
-    socketRef.current.on('message', ({id, message, time}) => {
-      setMessages([...messages, {message, id, time}]);
+    socketRef.current.on('message', ({sid, message, time, rid}) => {
+      setMessages([...messages, {message, sid, time, rid}]);
     });
+    Store.setMessages(messages);
     return () => {
       socketRef.current.disconnect();
     };
   }, [messages]);
 
   const onSubmitHandler = () => {
-    const {message, id, time} = chat;
-    console.log(message, id, time);
-    socketRef.current.emit('message', {message, id, time});
-    setChat({message: '', id: ''});
+    const {message, sid, time, rid} = chat;
+    console.log(message, sid, time, rid);
+    socketRef.current.emit('message', {message, sid, time, rid});
+    setChat({message: '', sid: '', time: '', rid: ''});
   };
 
   return (
     <KeyboardAvoidingView style={styles.container}>
-      <View style={{flex: 2, backgroundColor: 'red'}}>
+      <View style={{flex: 2}}>
         <Header
           placement="left"
           leftComponent={<LeftComponent />}
@@ -46,22 +48,11 @@ const Chat = ({route}) => {
           containerStyle={{
             backgroundColor: 'lightgrey',
             elevation: 10,
-            // height: hp('18%'),
           }}
         />
       </View>
       <View style={{flex: 10, marginTop: '20%'}}>
-        {messages.map(res => (
-          <View
-            style={
-              res.id === Store.id
-                ? styles.myChatMessageContainer
-                : styles.ChatMessageContainer
-            }>
-            <Text style={styles.ChatMessage}>{res.message}</Text>
-            <Text style={styles.time}>{res.time}</Text>
-          </View>
-        ))}
+        <ChatMessages messages={messages} id={userId}/>
       </View>
       <View style={{flex: 1.5}}>
         <Input
@@ -69,8 +60,9 @@ const Chat = ({route}) => {
           onChangeText={text =>
             setChat({
               message: text,
-              id: Store.id,
+              sid: Store.id,
               time: moment().format('hh:mm A'),
+              rid: userId,
             })
           }
           placeholder="Type a message"

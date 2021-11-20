@@ -34,6 +34,7 @@ const List = ({item, navigation}) => {
           onPress={() => {
             navigation.navigate('Chat',{
               name:item.name,
+              userId:item.id,
             });
           }}>
           <Text style={styles.buttonText} >Chat</Text>

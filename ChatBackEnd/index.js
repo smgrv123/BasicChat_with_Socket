@@ -5,10 +5,10 @@ const io = require("socket.io")(server);
 const port = 3000;
 
 io.on("connection", (socket) => {
-  console.log("a user connected :D");
-  socket.on("message", ({message,id,time}) => {
-    console.log(message,id,time);
-    io.emit("message", {message,id,time});
+  console.log("a user connected");
+  socket.on("message", ({message,sid,time,rid}) => {
+    console.log(message,sid,time,rid);
+    io.emit("message", {message,sid,time,rid});
   });
 });
 

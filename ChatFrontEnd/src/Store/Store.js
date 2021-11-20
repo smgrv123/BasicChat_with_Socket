@@ -1,7 +1,7 @@
-import { makeAutoObservable } from "mobx";
+import {makeAutoObservable} from 'mobx';
 
 class Store {
-  data= [
+  data = [
     {
       id: 0,
       name: 'test2',
@@ -80,14 +80,19 @@ class Store {
       state: 'Delhi',
     },
   ];
-  id=''
-  
+  id = '';
+  messages = [];
+
   constructor() {
     makeAutoObservable(this);
   }
 
-  setId(id){
-    this.id=id
+  setId(id) {
+    this.id = id;
+  }
+
+  setMessages(messages) {
+    this.messages = messages;
   }
 }
 

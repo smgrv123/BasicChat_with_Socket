@@ -18,6 +18,7 @@ const Login = ({navigation}) => {
     data = data.filter(item =>  item.id!=userID);
     Store.setId(userID);
     navigation.navigate('Landing',{data:data});
+    console.log('id',Store.id)
   };
 
   return (
